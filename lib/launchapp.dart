@@ -1,5 +1,6 @@
 import 'package:dream11/screens/home/home.dart';
 import 'package:dream11/screens/my_matches/my_matches.dart';
+import 'package:dream11/widgets/navigation_drawer.dart';
 import 'package:flutter/material.dart';
 
 class LaunchApp extends StatefulWidget {
@@ -12,22 +13,35 @@ class LaunchApp extends StatefulWidget {
 class _LaunchAppState extends State<LaunchApp> {
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
     return DefaultTabController(
       length: 5,
       child: Scaffold(
+        key: _scaffoldKey,
+        drawer: NavigationDrawer(),
         appBar: AppBar(
-          leading: Container(
-            padding: EdgeInsets.all(8),
-            child: Stack(
-              children: [
-                CircleAvatar(
-                  backgroundColor: Colors.green,
-                  child: Image.asset('assets/images/dream_logo.png'),
-                ),
-                Positioned(top: 20,left: 21,
-                    child: Icon(Icons.horizontal_split_outlined,color: Colors.black,))
-              ],
+          leading: InkWell(
+            child: Container(
+              padding: EdgeInsets.all(8),
+              child: Stack(
+                children: [
+                  CircleAvatar(
+                    backgroundColor: Colors.green,
+                    child: Image.asset('assets/images/dream_logo.png'),
+                  ),
+                  Positioned(top: 4,left: 21,
+                      child: SizedBox(
+                        width: 20,
+                        height: 50,
+                        child: CircleAvatar(
+                          radius: 20,
+                          backgroundColor: Colors.black,
+                            child: Icon(Icons.horizontal_split_outlined,color: Colors.white,size: 10,)),
+                      ))
+                ],
+              ),
             ),
+            onTap: () =>_scaffoldKey.currentState!.openDrawer(),
           ),
           elevation: 1,
           backgroundColor: Colors.white,
@@ -97,7 +111,7 @@ class _LaunchAppState extends State<LaunchApp> {
                     )
                   ),
                 ),
-                Expanded(
+                Flexible(flex: 3,
                   child: Container(
                     child: TabBarView(children: [
                       Home(),
@@ -105,6 +119,7 @@ class _LaunchAppState extends State<LaunchApp> {
                       My_Matches(),
                       My_Matches(),
                       My_Matches(),
+
                     ],
 
                     ),

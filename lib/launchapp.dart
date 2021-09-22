@@ -18,7 +18,9 @@ class _LaunchAppState extends State<LaunchApp> {
       length: 5,
       child: Scaffold(
         key: _scaffoldKey,
-        drawer: NavigationDrawer(),
+        drawer: Container(
+          width: MediaQuery.of(context).size.width*0.90,
+            child: NavigationDrawer()),
         appBar: AppBar(
           leading: InkWell(
             child: Container(

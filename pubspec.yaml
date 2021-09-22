@@ -50,6 +50,7 @@ flutter:
     - assets/images/kp.png
     - assets/images/chennaii.png
     - assets/images/dream_logo.png
+    - assets/images/profile.jpg
 
   # To add assets to your application, add an assets section, like this:
   # assets:
